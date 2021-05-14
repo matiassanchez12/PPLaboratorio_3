@@ -4,15 +4,13 @@ let bodyTabla = document.getElementById("bodytabla");
 let modal = document.getElementById("modal");
 let btnCerrarModal = document.getElementById("btncerrar");
 let btnModificar = document.getElementById('btnModificar');
+let btnEliminar = document.getElementById('btnEliminar');
 
 window.addEventListener("unload", cargarListadoMaterias());
 
 btnModificar.addEventListener('click', modificarMateria);
+btnEliminar.addEventListener('click', eliminarMateria);
 btnCerrarModal.addEventListener("click", cerrarModal);
-
-// document
-//   .getElementById("btnEliminar")
-//   .addEventListener("click", eliminarPersona);
 
 function cargarListadoMaterias() {
   let arrayMaterias = [];
@@ -88,8 +86,6 @@ function modificarMateria() {
   let fechaFinal = document.getElementById("fechaFinal");
   let turno = validarTurno(document.getElementsByName("turno"));
 
-  var timestamp = Date.parse('foo');
-
   if (validarDatos(nombre.value, fechaFinal.value, turno)) {
 
     let auxMateria = {
@@ -120,6 +116,29 @@ function modificarMateria() {
       alert('error en el form');
   }
 }
+
+function eliminarMateria() {
+    let id = document.getElementById("id");
+  
+    let auxMateria = {
+      id: id.value,
+    };
+  
+    isLoading(true);
+  
+    ejecutarPOST(auxMateria, "http://localhost:3000/eliminar", (respuesta) => {
+      if (respuesta.type == "ok") {
+        actualizarListado(auxMateria, false);
+  
+      } else {
+        alert("error en el backend");
+      }
+      
+      isLoading(false);
+  
+      cerrarModal();
+    });
+  }
 
 function actualizarListado(auxMateria, update) {
   let filas = bodyTabla.children;
