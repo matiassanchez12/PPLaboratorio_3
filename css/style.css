@@ -1,0 +1,35 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tabla-container {
+    padding: 10px;
+    background-color: rgb(165, 162, 162);
+  }
+  
+  table {
+    border-collapse: unset;
+    border-spacing: 0;
+  }
+  
+  th,
+  td {
+    margin: 0;
+    padding: 10px 50px;
+  }
+  
+  thead {
+    background-color: blue;
+    color: white;
+    border-spacing: none;
+    border-collapse: inherit;
+  }
+  
+  table tbody tr:nth-child(1n) {
+    background-color: #ccc;
+  }
+  
+  table tbody tr:nth-child(2n) {
+    background-color: #777;
+  }
