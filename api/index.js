@@ -118,6 +118,7 @@ app.get("/loginUsuario",function(req,res){
     res.send("Debe ingresar Usuario y Contraseña");
     
 });
+
 app.get("/materias",function(req,res){
    
  res.send(personas);    
@@ -196,7 +197,6 @@ app.post("/editar",function(req,res){
         if((req.body.id!= undefined&&req.body.id!= "") &&(req.body.nombre!= undefined&&req.body.nombre!= "") &&(req.body.cuatrimestre!= undefined&&req.body.cuatrimestre!= "") 
 			&&  (req.body.fechaFinal!= undefined&&req.body.fechaFinal!= "") && (req.body.turno!= undefined&&req.body.turno!= "")){
 	
-
         
 				for(var i =0;i<personas.length;i++){
 					if(req.body.id== personas[i].id){

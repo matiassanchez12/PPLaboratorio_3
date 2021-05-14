@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parcial I</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/spinner.css">
 </head>
+
 <body>
+    <div id="cover-spin"></div>
+
     <div class="main-container">
         <div class="tabla-container">
             <h3>Lista de materias</h3>
@@ -24,7 +29,51 @@
             </table>
         </div>
     </div>
+
+    <!-- Modal Form -->
+    <div class="modal-container" id="modal" hidden>
+        <div class="modal-form">
+
+            <input type="hidden" id="id" name="id" hidden>
+
+            <div class="btn-cerrar-container">
+                <button class="btn-danger btn-cerrar" id="btncerrar">X</button>
+            </div>
+
+            <div>
+                <label>Nombre</label></br>
+                <input type="text" class="input-text" id="nombre">
+            </div>
+            <div>
+                <label>Cuatrimestre</label></br>
+                <select name="cuatrimestre" id="cuatrimestre" class="input-text">
+                    <option value="1" selected id="1">1</option>
+                    <option value="2" id="2">2</option>
+                    <option value="3" id="3">3</option>
+                    <option value="4" id="4">4</option>
+                </select>
+            </div>
+            <div>
+                <label>Fecha</label></br>
+                <input type="datetime" class="input-text" id="fechaFinal">
+            </div>
+            <div id="turno">
+                <label>Turno</label></br>
+                <input type="radio" value="Mañana" id="Mañana" name="turno">
+                <label for="mañana">Mañana</label>
+                </br>
+                <input type="radio" value="Noche" id="Noche" name="turno">
+                <label for="noche">Noche</label>
+            </div>
+
+            <div class="buttons-container">
+                <button class="btn-danger" id="btnEliminar">Eliminar</button>
+                <button class="btn-success" id="btnModificar">Modificar</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 <script src="./js/index.js" type="module"></script>
+
 </html>

@@ -33,3 +33,67 @@
   table tbody tr:nth-child(2n) {
     background-color: #777;
   }
+
+  .modal-container {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    display: none;
+    align-items: center;
+    background: #f9ca835e;
+    justify-content: center;
+  }
+  
+  .modal-form {
+    width: 25%;
+    padding: 50px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-text {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  
+  .btn-danger {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    padding: 10px 30px;
+  }
+  
+  .btn-success {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    padding: 10px 30px;
+  }
+  
+  .btn-cerrar-container {
+    justify-self: end;
+    margin: 20px 0px;
+  }
+  
+  .btn-cerrar {
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px 25px;
+  }
+
+  .input-danger {
+    border: 1px solid red;
+  }
+  
