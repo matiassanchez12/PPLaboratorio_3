@@ -3,13 +3,13 @@ import { ejecutarGET, ejecutarPOST } from "./apiMaterias.js";
 let bodyTabla = document.getElementById("bodytabla");
 let modal = document.getElementById("modal");
 let btnCerrarModal = document.getElementById("btncerrar");
-let btnModificar = document.getElementById('btnModificar');
-let btnEliminar = document.getElementById('btnEliminar');
+let btnModificar = document.getElementById("btnModificar");
+let btnEliminar = document.getElementById("btnEliminar");
 
 window.addEventListener("unload", cargarListadoMaterias());
 
-btnModificar.addEventListener('click', modificarMateria);
-btnEliminar.addEventListener('click', eliminarMateria);
+btnModificar.addEventListener("click", modificarMateria);
+btnEliminar.addEventListener("click", eliminarMateria);
 btnCerrarModal.addEventListener("click", cerrarModal);
 
 function cargarListadoMaterias() {
@@ -87,11 +87,10 @@ function modificarMateria() {
   let turno = validarTurno(document.getElementsByName("turno"));
 
   if (validarDatos(nombre.value, fechaFinal.value, turno)) {
-
     let auxMateria = {
-      id : id.value,
+      id: id.value,
       nombre: nombre.value,
-      cuatrimestre : cuatrimestre.value,
+      cuatrimestre: cuatrimestre.value,
       fechaFinal: fechaFinal.value,
       turno: turno,
     };
@@ -101,8 +100,7 @@ function modificarMateria() {
     isLoading(true);
 
     ejecutarPOST(auxMateria, "http://localhost:3000/editar", (respuesta) => {
-
-    if (respuesta.type == "ok") {
+      if (respuesta.type == "ok") {
         actualizarListado(auxMateria, true);
 
         isLoading(false);
@@ -112,33 +110,32 @@ function modificarMateria() {
         alert("error en el backend");
       }
     });
-  }else{
-      alert('error en el form');
+  } else {
+    alert("error en el form");
   }
 }
 
 function eliminarMateria() {
-    let id = document.getElementById("id");
-  
-    let auxMateria = {
-      id: id.value,
-    };
-  
-    isLoading(true);
-  
-    ejecutarPOST(auxMateria, "http://localhost:3000/eliminar", (respuesta) => {
-      if (respuesta.type == "ok") {
-        actualizarListado(auxMateria, false);
-  
-      } else {
-        alert("error en el backend");
-      }
-      
-      isLoading(false);
-  
-      cerrarModal();
-    });
-  }
+  let id = document.getElementById("id");
+
+  let auxMateria = {
+    id: id.value,
+  };
+
+  isLoading(true);
+
+  ejecutarPOST(auxMateria, "http://localhost:3000/eliminar", (respuesta) => {
+    if (respuesta.type == "ok") {
+      actualizarListado(auxMateria, false);
+    } else {
+      alert("error en el backend");
+    }
+
+    isLoading(false);
+
+    cerrarModal();
+  });
+}
 
 function actualizarListado(auxMateria, update) {
   let filas = bodyTabla.children;
@@ -168,11 +165,11 @@ function validarDatos(nombre, fecha, turno) {
     document.getElementById("nombre").classList.add("input-danger");
     return false;
   }
+  
+  let fechaHoy = new Date().toISOString().slice(0, 10);
+  let fechaFinal = transformarStringToDate(fecha);   
 
-  var d = Date.parse('14-05-2021', "Y-m-d");
-  console.log(d);
-
-  if (fecha > '14-05-2021') {
+  if (fechaFinal < fechaHoy) {
     document.getElementById("fechaFinal").classList.add("input-danger");
     return false;
   }
@@ -201,9 +198,18 @@ function isLoading(estado) {
 }
 
 function validarTurno(turno) {
-    if (turno[0].checked === true) {
-      return turno[0].value;
-    } else {
-      return turno[1].value;
-    }
+  if (turno[0].checked === true) {
+    return turno[0].value;
+  } else {
+    return turno[1].value;
   }
+}
+
+function transformarStringToDate(stringDate) {
+    var d = stringDate;
+    var tempD = d.split("/");
+    let myDate = tempD[2] + "-" + tempD[1] + "-" + tempD[0];
+    let date = new Date(myDate).toISOString().slice(0, 10);
+    
+    return date;
+}
