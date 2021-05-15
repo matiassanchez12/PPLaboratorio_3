@@ -1,18 +1,32 @@
 .main-container {
     display: flex;
     justify-content: center;
+    color: white;
+    background: #aad2f5;
   }
-  
+  h3{
+    font-weight: bold;
+    font-size: 2em;
+    font-family: sans-serif;
+    color: black;
+  }
   .tabla-container {
-    padding: 10px;
+    margin: 15px;
     background-color: rgb(165, 162, 162);
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(220 172 172);
   }
   
   table {
     border-collapse: unset;
     border-spacing: 0;
   }
-  
+
+  #maintabla{
+    border-radius: 50%;
+  }
+
   th,
   td {
     margin: 0;
@@ -20,18 +34,27 @@
   }
   
   thead {
-    background-color: blue;
+    background-color: rgb(115 89 69);
     color: white;
     border-spacing: none;
     border-collapse: inherit;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: sans-serif;
+    text-align: left;
   }
   
+  table tbody{
+    font-size: 1em;
+    font-family: sans-serif;
+  }
+
   table tbody tr:nth-child(1n) {
-    background-color: #ccc;
+    background-color: rgb(186, 164, 79);
   }
   
   table tbody tr:nth-child(2n) {
-    background-color: #777;
+    background-color: rgb(133, 120, 50);
   }
 
   .modal-container {
@@ -46,16 +69,23 @@
   }
   
   .modal-form {
-    width: 25%;
-    padding: 50px;
-    background-color: lightgray;
+    width: 33%;
+    padding: 27px 42px;
+    background-color: #b7f3ad;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
+    font-weight: bold;
+    font-size: 1em;
+    font-family: sans-serif;
   }
   
   .input-text {
-    margin-bottom: 15px;
+    margin: 13px 7px;
     width: 100%;
+    padding: 6px;
+    font-size: 1em;
+    font-weight: 500;
   }
   
   .buttons-container {
@@ -71,6 +101,14 @@
     border-radius: 50px;
     border: none;
     padding: 10px 30px;
+    transition: background-color .5s;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    }
+  
+    .btn-danger:hover{
+    background-color: rgb(116, 77, 77);
   }
   
   .btn-success {
@@ -79,18 +117,34 @@
     font-weight: bold;
     border-radius: 50px;
     border: none;
-    padding: 10px 30px;
+    padding: 8px 30px;
+  transition: background-color .5s;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
   }
+
+  .btn-success:hover{
+  background-color: rgb(77, 116, 89);
+}
   
   .btn-cerrar-container {
     justify-self: end;
-    margin: 20px 0px;
+    margin-bottom: 48px;
   }
   
   .btn-cerrar {
     border-radius: 10px;
     text-align: center;
-    padding: 10px 25px;
+    padding: 8px 25px;
+    transition: background-color .5s;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .btn-cerrar:hover{
+    background-color: rgb(116, 77, 77);
   }
 
   .input-danger {

@@ -166,13 +166,21 @@ function validarDatos(nombre, fecha, turno) {
     return false;
   }
   
-  let fechaHoy = new Date().toISOString().slice(0, 10);
-  let fechaFinal = transformarStringToDate(fecha);   
+  if(fecha != null && fecha != ''){
 
-  if (fechaFinal < fechaHoy) {
+    console.log(fecha);
+    let fechaHoy = new Date().toISOString().slice(0, 10);
+    let fechaFinal = transformarStringToDate(fecha);   
+  
+    if (fechaFinal < fechaHoy) {
+      document.getElementById("fechaFinal").classList.add("input-danger");
+      return false;
+    }
+  }else{
     document.getElementById("fechaFinal").classList.add("input-danger");
     return false;
   }
+ 
 
   if (turno === null) {
     document.getElementById("turno").classList.add("input-danger");
